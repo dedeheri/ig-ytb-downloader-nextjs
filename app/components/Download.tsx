@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Ring } from "@uiball/loaders";
 import fileDownload from "js-file-download";
 import { redirect } from "next/navigation";
+import { DEVELOPMENT_URL } from "../libs/api";
 
 interface VideoInterface {
   thumbnail: string;
@@ -30,7 +31,7 @@ function Download({
     try {
       setFetching(true);
 
-      const res = await axios.post("http://localhost:3000/api/download", {
+      const res = await axios.post(DEVELOPMENT_URL + "/api/download", {
         url,
         itag: selectedFormat?.itag,
         responseType: "blob",

@@ -8,6 +8,7 @@ import Video from "./components/Download";
 import Search from "./components/Search";
 import Header from "./components/Header";
 import Support from "./components/Support";
+import { DEVELOPMENT_URL } from "./libs/api";
 
 export interface ResultInterface {
   format: [];
@@ -35,7 +36,7 @@ export default function Home() {
     events.preventDefault();
     try {
       setFetching(true);
-      const res = await axios.post("http://localhost:3000/api/url", {
+      const res = await axios.post(DEVELOPMENT_URL + "/api/url", {
         url,
       });
       setResult(res?.data?.result);
